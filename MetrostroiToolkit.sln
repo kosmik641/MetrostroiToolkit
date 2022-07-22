@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetrostroiToolkit", "MetrostroiToolkit\MetrostroiToolkit.csproj", "{308D5E07-C72A-40D6-B1FF-50C8703CFF89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{308D5E07-C72A-40D6-B1FF-50C8703CFF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308D5E07-C72A-40D6-B1FF-50C8703CFF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308D5E07-C72A-40D6-B1FF-50C8703CFF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308D5E07-C72A-40D6-B1FF-50C8703CFF89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2894D706-DCC8-4B71-8801-8A92CD92CF5B}
+	EndGlobalSection
+EndGlobal

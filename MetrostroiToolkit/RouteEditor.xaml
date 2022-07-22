@@ -1,0 +1,120 @@
+﻿<Window x:Class="MetrostroiToolkit.RouteEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetrostroiToolkit"
+        mc:Ignorable="d"
+        Title="Route Editor" Width="800" Height="600" FontFamily="Arial">
+    <Grid>
+        <!-- Menu -->
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open file" Click="MenuOpenFile_Click"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Main grid -->
+        <Grid Margin="0,18,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.35*" MinWidth="185"/>
+                <ColumnDefinition Width="*" MinWidth="350"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left column-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <ListBox x:Name="Stations_LB" DisplayMemberPath="ListName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,0"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Margin="5,5,2.5,5" Content="Add station" MinWidth="70" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddStation"/>
+                <Button x:Name="RemoveStationBtn" Grid.Row="1" Grid.Column="1" Margin="2.5,5,5,5" Content="Remove station" MinWidth="85" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="DeleteStation">
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding ="{Binding ElementName=Stations_LB, Path=SelectedIndex}" Value="-1">
+                                    <Setter Property="Button.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="120" Margin="-2,0,0,0" VerticalAlignment="Center" Width="4"/>
+            
+            <!-- Right column -->
+            <TabControl x:Name="StationEditorTC" Grid.Column="1" Margin="5,30,5,5">
+                <TabItem Header="Main"/>
+                <TabItem Header="ASNP" Content="{Binding EditorASNP}"/>
+
+                <TabItem Header="UPO">
+                    <Grid/>
+                </TabItem>
+                <TabItem Header="Teleport configuration">
+                    <Grid/>
+                </TabItem>
+            </TabControl>
+
+            <!-- Text box for Name -->
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+            <TextBox x:Name="StationName_TB" Text="{Binding ElementName=Stations_LB, Path=SelectedItem.EditorName}" Grid.Column="1" HorizontalAlignment="Left" Margin="46,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" TextAlignment="Left" KeyDown="UnfocusToList">
+                <TextBox.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding SelectedIndex, ElementName=Stations_}" Value="-1">
+                                <Setter Property="UIElement.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button Grid.Column="1" Content="✓" HorizontalAlignment="Left" Margin="232,12,0,0" VerticalAlignment="Top" Width="12" Height="12" FontSize="8">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding IsFocused, ElementName=StationName_TB}" Value="False">
+                                <Setter Property="UIElement.Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Text box for ID -->
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="256,10,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
+            <TextBox x:Name="StationID_TB" Text="{Binding ElementName=Stations_LB, Path=SelectedItem.ID}" MaxLength="3" Grid.Column="1" HorizontalAlignment="Left" Margin="276,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="42" TextAlignment="Left" KeyDown="UnfocusToList">
+                <TextBox.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding ElementName=Stations_LB, Path=SelectedIndex}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button Grid.Column="1" Content="✓" HorizontalAlignment="Left" Margin="304,12,0,0" VerticalAlignment="Top" Width="12" Height="12" FontSize="8">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding IsFocused, ElementName=StationID_TB}" Value="False">
+                                <Setter Property="UIElement.Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

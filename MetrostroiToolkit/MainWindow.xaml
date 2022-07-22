@@ -1,0 +1,36 @@
+﻿<Window x:Class="MetrostroiToolkit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetrostroiToolkit"
+        mc:Ignorable="d"
+        Title="Metrostroi Toolkit" MinWidth="400" MinHeight="200" Width="400" Height="200" ResizeMode="CanMinimize" FontFamily="Arial">
+    <Grid>
+        <Label Content="Metrostroi Toolkit" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2"/>
+        <Button x:Name="OpenRouteEditor" Content="Open route editor" HorizontalAlignment="Left" Margin="30,65,0,0" VerticalAlignment="Top" Height="65" Width="150" FontSize="14" Click="OpenRouteEditor_Click"/>
+        <Button x:Name="OpenSignalEditor" Content="Open signal editor" HorizontalAlignment="Right" Margin="0,65,30,0" VerticalAlignment="Top" Height="65" Width="150" FontSize="14" Grid.Column="1"/>
+
+        <Grid VerticalAlignment="Bottom" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" TextAlignment="Center">
+                <Hyperlink NavigateUri="https://metrostroi.net" RequestNavigate="Hyperlink_RequestNavigate">Metrostroi.net</Hyperlink>
+            </TextBlock>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" TextAlignment="Center">
+                <Hyperlink NavigateUri="https://github.com/metrostroi-repo/MetrostroiAddon" RequestNavigate="Hyperlink_RequestNavigate">GitHub Metrostroi</Hyperlink>
+            </TextBlock>
+            <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" TextAlignment="Center">
+                <Hyperlink NavigateUri="https://github.com/kosmik641/MetrostroiToolkit" RequestNavigate="Hyperlink_RequestNavigate">Toolkit source code</Hyperlink>
+            </TextBlock>
+            <Label Content="Ven, 2022" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" FontSize="10"/>
+        </Grid>
+        
+
+    </Grid>
+</Window>
